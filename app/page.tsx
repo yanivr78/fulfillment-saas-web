@@ -1,5 +1,7 @@
 import React from 'react';
 import ControlTowerDemo from './components/ControlTowerDemo';
+import Warehouse3DScene from './components/Warehouse3DScene';
+import Tilt3DCard from './components/Tilt3DCard';
 
 interface MetricCard {
   label: string;
@@ -166,6 +168,7 @@ export default function Home() {
           </div>
 
           <div className="nav-links">
+            <a href="#spatial-twin">3D Digital Twin</a>
             <a href="#control-tower">Interactive Control Tower</a>
             <a href="#invariants">Invariants</a>
             <a href="#capabilities">Architecture</a>
@@ -208,6 +211,11 @@ export default function Home() {
             </a>
           </div>
 
+          {/* Interactive 3D Warehouse Digital Twin */}
+          <section id="spatial-twin" aria-label="Interactive 3D Warehouse Digital Twin" style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+            <Warehouse3DScene />
+          </section>
+
           {/* Summary Metrics / Platform Invariants */}
           <section id="invariants" aria-labelledby="metrics-heading" style={{ textAlign: 'left', marginTop: '2rem' }}>
             <h2
@@ -225,7 +233,7 @@ export default function Home() {
             </h2>
             <div className="kpi-strip">
               {SUMMARY_METRICS.map((card) => (
-                <article key={card.label} className="kpi-card">
+                <Tilt3DCard key={card.label} className="kpi-card" intensity={10}>
                   <h3 style={{ fontSize: '0.88rem', color: '#94a3b8', fontWeight: 600 }}>{card.label}</h3>
                   <p
                     style={{
@@ -239,7 +247,7 @@ export default function Home() {
                     {card.value}
                   </p>
                   <p style={{ fontSize: '0.82rem', color: '#64748b' }}>{card.detail}</p>
-                </article>
+                </Tilt3DCard>
               ))}
             </div>
           </section>
